@@ -60,6 +60,28 @@ fn compile_it() {
 fn allow_unused() {
     let _x = 1; // underscore removes warning
 }
+// 8
+fn destructuring() {
+    // you have to make each var mutable in the tuple to increment it
+    let (mut x, mut y) = (1, 2); // tuple is destructured
+    x += 2;
+
+    assert_eq!(x, 3);
+    assert_eq!(y, 2);
+
+    println!("Complete");
+}
+// 9
+fn destructuring_assignments() {
+    // using tuples to destructure assignments
+    let (x, y); // same thing as let x; let y;
+
+    (x, ..) = (3, 4); // x = 3, we dont care about 4
+    [.., y] = [1, 2]; // y = 2, we dont care about 1
+
+    assert_eq!([x, y], [3, 2]);
+    println!("Ngwanu!");
+}
 
 fn main() {
     first_assert();
@@ -69,4 +91,6 @@ fn main() {
     shadowing();
     compile_it();
     allow_unused();
+    destructuring();
+    destructuring_assignments();
 }
