@@ -101,7 +101,40 @@ fn range() {
 }
 
 // 11
+fn computations() {
+    // integer addition
+    assert!(1u32 + 2 == 3);  // compiler infers 2 and 3 as u32
+    // integer subtraction
+    assert!(1i32 - 2 == -1); // compiler infers 2 and -1 as i32
+    assert!(1i8 - 2 == -1); // old - u8
+    assert!(9.6f32 / 3.2 as f32 == 3.0); // 3 different annotations
+    assert!(24 % 5 == 4);
+    // Boolean Logic
+        // Three basic operations - AND, OR, NOT
+        // Two Values - true, false
+        //  - false AND true = false
+        //  - false OR true = true
+        //  - !false = true
+    // Bitwise operations
+        // Operations that manipulate individual bits that make up a binary number
+        // Treating each bit of a binary number as a separate unit and perform logical operations on them
+        // - AND, OR, XOR, bitwise shifting
+            //  XOR -> returns 1 if the inputs are different and 0 if the inputs are the same.
+        // Bitwise shifting
+        // - in a 8 bit system -> 128 >> 2 = 32 // bitwise rightshift
+        // - in a 8 bit system -> 1 << 4 = 16 // bitwise leftshift
+    // Short-circuiting boolean logic
+        assert!(true && false == false);
+        assert!(true || false == true);
+        assert!(!false == true);
 
+    // Bitwise operations
+    println!("0011 AND 0101 = {:04b}", 0b00111u32 & 0b0101);
+    println!("0011 OR 0101 = {:04b}", 0b0011u32 | 0b0101);
+    println!("00111 XOR 0101 = {:04b}", 0b0011u32 ^ 0b0101);
+    println!("1 << 5 = {}", 1u32 << 5);
+    println!("0x80 >> 2 = 0x{:x}", 0x80u32 >> 2);
+}
 fn main() {
     sign_to_unsign();
     type_annotations();
@@ -113,4 +146,5 @@ fn main() {
     floating_point();
     for_loop();
     range();
+    computations();
 }
