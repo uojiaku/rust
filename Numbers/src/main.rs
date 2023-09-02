@@ -70,6 +70,37 @@ fn print_type_float() {
     assert_eq!(type_of(&x), "f64".to_string());
     println!("float");
 }
+// 8
+fn floating_point() {
+    // assert!(0.1 + 0.2 == 0.3); // 0.1 + 0.2 = 0.30000000000000002
+    // above fails because the floating point is too precise
+    assert!(0.1_f32 + 0.2_f32 == 0.3_f32); // 1st way to fix
+    assert!(0.1 as f32 + 0.2 as f32 == 0.3_f32); // 2nd way to fix
+    println!("floating success");
+}
+// 9
+fn for_loop() {
+    let mut sum: i32 = 0;
+    for i in -3..2 {
+        // iterates from -3 to 1
+        sum += i
+    }
+
+    assert!(sum == -5);
+
+    for c in 'a'..='z' {
+        println!("{}", c as u8);
+    }
+}
+// 10
+fn range() {
+    use std::ops::{Range, RangeInclusive};
+    assert_eq!((1..5), Range { start: 1, end: 5 }); // assert that 1..5 and Range {start: 1, end: 5} are equal
+    assert_eq!((1..=5), RangeInclusive::new(1, 5)); // 1..=5 to make 5 inclusive
+    println!("{}", "Onye na-ekwu?");
+}
+
+// 11
 
 fn main() {
     sign_to_unsign();
@@ -79,4 +110,7 @@ fn main() {
     add_to_max_value();
     number_systems_ops();
     print_type_float();
+    floating_point();
+    for_loop();
+    range();
 }
